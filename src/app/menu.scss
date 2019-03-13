@@ -1,0 +1,22 @@
+.menu-footer {
+    border-top: solid 1px grey;
+    display: flex;
+    justify-content: space-evenly;
+    height: 50px;
+
+    > div {
+        height: 50px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 60px;
+        width: 100px;
+    }
+
+    .github {
+        background-image:url('./assets/github.png');
+    }
+
+    .license {
+        background-image: url('./assets/license.png');
+    }
+}

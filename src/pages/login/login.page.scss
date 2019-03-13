@@ -1,0 +1,40 @@
+.login-form {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.about-footer {
+    border-top: solid 1px #ddd;
+    height: 50px;
+    text-align: right;
+
+    > div {
+        height: 50px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 60px;
+        display: inline-block;
+        width: 85px;
+    }
+
+    .github {
+        background-image:url('../../assets/github.png');
+    }
+
+    .license {
+        background-image: url('../../assets/license.png');
+    }
+
+    .me {
+        background-image: url('../../assets/twitter.png');
+        background-position: center left;
+        background-size: 25px;
+        color: #444;
+        float: left;
+        font-size: 13px;
+        line-height: 50px;
+        margin-left: 10px;
+        padding-left: 28px;
+        width: auto;
+    }
+}

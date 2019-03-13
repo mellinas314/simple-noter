@@ -1,5 +1,9 @@
 {
     "login.dologin_button": "Iniciar",
+    "login.error_fields": "Debe rellenar los campos usuario y contraseña",
+    "login.error_login_in": "Se ha producido un error al iniciar sesión. Revisa tu usuario y contraseña.",
     "login.mail_placeholder": "Correo electrónico",
-    "login.pass_placeholder": "Contraseña"
+    "login.pass_placeholder": "Contraseña",
+
+    "shared.close": "Cerrar"
 }
