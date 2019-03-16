@@ -1,7 +1,7 @@
 import { FIREBASE_CONFIG } from './../../config';
 import { Component } from '@angular/core';
 
-import { Platform, Events } from '@ionic/angular';
+import { Platform, Events, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UserService } from 'src/services/user/user.service';
@@ -17,24 +17,16 @@ window['firebase'] = firebase;
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    }
-  ];
+  public appPages = null;
 
   public hasSession = false;
+  public user = null;
 
+  /** @hidden */
   constructor(
     private router: Router,
     private platform: Platform,
+    private menuCtrl: MenuController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private userService: UserService,
@@ -42,16 +34,14 @@ export class AppComponent {
     private translate: TranslateService
   ) {
     this.initializeApp();
-    this.events.subscribe(this.userService.LOGIN_EVENT, () => {
-      this.hasSession = true;
-    });
-    this.events.subscribe(this.userService.LOGOUT_EVENT, () => {
-      this.hasSession = false;
-    });
     this.translate.setDefaultLang('es');
-    this.translate.use('es');
+    this.translate.use('es').subscribe( _ => {
+      this.initPagesArray();
+    });
 
     this.attachSessionEvents();
+    this.manageSessionMenu();
+    window['mainApp'] = this;
   }
 
   initializeApp() {
@@ -79,5 +69,44 @@ export class AppComponent {
     this.events.subscribe(this.userService.LOGOUT_EVENT, _ => {
       this.router.navigate(['login']);
     });
+  }
+
+  private manageSessionMenu() {
+    this.events.subscribe(this.userService.LOGIN_EVENT, user => {
+      this.hasSession = true;
+      this.user = user && user.user;
+    });
+    this.events.subscribe(this.userService.LOGOUT_EVENT, () => {
+      this.hasSession = false;
+    });
+    this.userService.isLogged().subscribe( isLogged => {
+      this.hasSession = isLogged;
+    }, _ => {
+      this.hasSession = false;
+    });
+    this.userService.getCurrentUser().then( user => {
+      this.user = user;
+    });
+  }
+
+  public logout() {
+    this.menuCtrl.close().then( _ => {
+      this.userService.doLogout();
+    });
+  }
+
+  private initPagesArray() {
+    this.appPages = [
+      {
+        title: this.translate.instant('menu.home'),
+        url: '/home',
+        icon: 'list'
+      },
+      {
+        title: this.translate.instant('menu.clients'),
+        url: '/clients',
+        icon: 'people'
+      }
+    ];
   }
 }

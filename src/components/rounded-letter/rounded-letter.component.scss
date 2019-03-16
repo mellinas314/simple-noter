@@ -1,0 +1,25 @@
+:host {
+    border: solid 2px black;
+    border-radius: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+
+    &::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+        width: 100%;
+    }
+}
+
+.letter-container {
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    text-transform: uppercase;
+    transform: translate3d(0, -50%, 0);
+    width: 100%;
+}

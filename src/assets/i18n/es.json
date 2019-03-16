@@ -5,5 +5,9 @@
     "login.mail_placeholder": "Correo electrónico",
     "login.pass_placeholder": "Contraseña",
 
+    "menu.clients": "Clientes",
+    "menu.home": "Home",
+    "menu.logout": "Cerrar sesión",
+
     "shared.close": "Cerrar"
 }

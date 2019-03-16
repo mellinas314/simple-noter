@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/guards/auth/auth.guard';
 import { NonAuthGuard } from 'src/guards/non-auth/non-auth.guard';
+import { Guard404Guard } from 'src/guards/404/guard404.guard';
 
 const routes: Routes = [
   {
@@ -20,9 +21,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'list',
+    path: 'clients',
     loadChildren: '../pages/list/list.module#ListPageModule',
     canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 
