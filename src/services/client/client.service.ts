@@ -44,8 +44,14 @@ export class ClientService {
   public getAllClients(): Promise<Client[]> {
     return new Promise( (resolve, reject) => {
       this.db.collection(this.COLLECTION_NAME).get().then( data => {
-        console.log("CLIENTS DATA", data);
-      });
+        const clients: Client[] = [];
+        data.docs.forEach( client => {
+          const tmpClient = <Client>client.data();
+          tmpClient.id = client.id;
+          clients.push(tmpClient);
+        });
+        resolve(clients);
+      }).catch( reject );
     });
   }
 }

@@ -1,12 +1,19 @@
 {
+    "client.alert.error_creating": "Se ha producido un error al sincronizar la información. Inténtalo de nuevo más tarde",
+    "client.list.call": "Llamar",
     "client.create": "Nuevo cliente",
+    "client.list.edit": "Editar",
     "client.email": "Correo electrónico",
     "client.email.validation": "Correo electrónico no válido",
+    "client.list.mail": "Enviar mail",
     "client.name": "Nombre",
     "client.name.validation": "Campo obligatorio",
     "client.phone": "Teléfono",
     "client.phone.validation": "Teléfono no válido",
     "client.save": "Guardar",
+
+    "client.list.error_downloading": "No se ha podido descargar la información. Inténtalo de nuevo más tarde.",
+    "client.list.no_items": "Aún no ha añadido ningún cliente",
 
     "login.dologin_button": "Iniciar",
     "login.error_fields": "Debe rellenar los campos usuario y contraseña",

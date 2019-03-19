@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { ListPage } from './list.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { ComponentsModule } from 'src/components/components.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { TranslateModule } from '@ngx-translate/core';
         component: ListPage
       }
     ]),
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    ComponentsModule
   ],
   declarations: [ListPage]
 })

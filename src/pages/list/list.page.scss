@@ -1,1 +1,102 @@
+:host {
+    ion-content {
+        --background: #f8f8f8;
+    }
+}
 
+.empty-list {
+    &::before {
+        background: url('../../assets/icon/client_empty.png') no-repeat;
+        background-position: center;
+        background-size: 70px;
+        content: '';
+        display: block;
+        padding-top: 150px;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 21px;
+        font-weight: 600;
+        margin: 0 20px;
+        text-align: center;
+    }
+}
+
+ion-grid {
+    padding: 0;
+}
+
+ion-card {
+    background: white;
+    margin: 8px;
+
+    .client-card-header {
+        align-items: center;
+        display: flex;
+
+        app-rounded-letter {
+            flex: 0 0 65px;
+            min-width: 65px;
+        }
+
+        .client-info {
+            color: #333;
+            margin-left: 10px;
+
+            h1 {
+                font-size: 19px;
+                font-weight: 600;
+                margin-top: 0;
+            }
+
+            .client-additional-info {
+                > * {
+                    font-size: 17px;
+                    margin-bottom: 0;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+
+    .card-content {
+        padding: 0;
+
+        .buttons-footer {
+            border-top: solid 1px #f0f0f0;
+            display: flex;
+
+            > div {
+                flex: 1 0 auto;
+                padding: 10px 0;
+                position: relative;
+                text-align: center;
+
+                &::before {
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 15px;
+                    content: '';
+                    display: inline-block;
+                    height: 17px;
+                    margin-bottom: -4px;
+                    margin-right: 4px;
+                    width: 17px;
+                }
+
+                &.mail::before {
+                    background-image: url('../../assets/icon/mail.png');
+                }
+
+                &.phone::before {
+                    background-image: url('../../assets/icon/phone.png');
+                }
+
+                &.edit::before {
+                    background-image: url('../../assets/icon/edit.png');
+                }
+            }
+        }
+    }
+}

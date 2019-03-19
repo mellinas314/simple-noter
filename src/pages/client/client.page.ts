@@ -55,7 +55,12 @@ export class ClientPage {
             this.clientForm.reset();
             window.history.back();
           }).catch( err => {
-            console.warn(err);
+            this.alertCtrl.create({
+              message: this.translateS.instant('client.alert.error_creating'),
+              buttons: [this.translateS.instant('shared.close')]
+            }).then( alert => {
+              alert.present();
+            });
           }).then( loader.dismiss );
         }
       });
