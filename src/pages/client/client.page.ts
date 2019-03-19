@@ -1,6 +1,6 @@
 import { ClientService } from './../../services/client/client.service';
 import { TranslateService } from '@ngx-translate/core';
-import { AlertController, LoadingController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +20,6 @@ export class ClientPage {
 
   constructor(
     private route: ActivatedRoute,
-    private navCtrl: NavController,
     private formBuilder: FormBuilder,
     private translateS: TranslateService,
     private loadingCtrl: LoadingController,

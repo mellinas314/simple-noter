@@ -1,9 +1,70 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>task</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+
+      <ion-title *ngIf="!initializing && !id" >{{ 'task.create' | translate }}</ion-title>
+      <ion-title *ngIf="!initializing && id" >{{ 'task.edit' | translate }}</ion-title>
+
+      <ion-buttons slot="end" *ngIf="!initializing && id">
+        <ion-button icon-only (click)="deleteTask()" >
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content padding>
+
+    <form [formGroup]="taskForm" (ngSubmit)="updateData()" >
+
+        <div class="validator-group" [class.invalid]="!taskForm.controls.title.valid && (!!taskForm.controls.title.dirty || submitAttempt)">
+          <ion-item>
+              <ion-label position="stacked">{{ 'task.title' | translate}}<span class="required">*</span></ion-label>
+              <ion-input formControlName="title" type="text"></ion-input>
+          </ion-item>
+          <div class="validation-error">{{ 'task.title.validation' | translate }}</div>
+        </div>
+
+        <div class="validator-group" [class.invalid]="!taskForm.controls.description.valid && (!!taskForm.controls.description.dirty || submitAttempt)">
+          <ion-item>
+              <ion-label position="stacked">{{ 'task.description' | translate}}<span class="required">*</span></ion-label>
+              <ion-textarea formControlName="description" rows=6></ion-textarea>
+          </ion-item>
+          <div class="validation-error">{{ 'task.description.validation' | translate }}</div>
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">{{ 'task.client' | translate }}</ion-label>
+          <ion-select placeholder="{{'task.client' | translate}}"
+                      formControlName="client" okText="{{ 'shared.accept' | translate }}"
+                      cancelText="{{ 'shared.cancel' | translate}}"
+                      interface="action-sheet" (ionChange)="onChangeClient($event)">
+            <ion-select-option *ngFor="let cliente of clients" [value]="cliente.id"> {{ cliente.name }} </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div class="validator-group" [class.invalid]="!taskForm.controls.clientDescriptionName.valid && (!!taskForm.controls.clientDescriptionName.dirty || submitAttempt)">
+          <ion-item>
+              <ion-label position="stacked">{{ 'task.client_desc' | translate}}</ion-label>
+              <ion-input formControlName="clientDescriptionName"></ion-input>
+          </ion-item>
+          <div class="validation-error">{{ 'task.client_desc.validation' | translate }}</div>
+        </div>
+
+        <div class="validator-group" [class.invalid]="!taskForm.controls.total.valid && (!!taskForm.controls.total.dirty || submitAttempt)">
+          <ion-item>
+              <ion-label position="stacked">{{ 'task.total' | translate}}</ion-label>
+              <ion-input formControlName="total" type="number"></ion-input>
+          </ion-item>
+          <div class="validation-error">{{ 'task.total.validation' | translate }}</div>
+        </div>
+
+        <ion-button margin-top expand="block" type="submit">{{ 'client.save' | translate }}</ion-button>
+
+      </form>
 
 </ion-content>

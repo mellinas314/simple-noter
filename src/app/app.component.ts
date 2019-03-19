@@ -6,6 +6,7 @@ import { UserService } from 'src/services/user/user.service';
 import { TranslateService } from '@ngx-translate/core';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 import { Router } from '@angular/router';
 
 window['firebase'] = firebase;
@@ -36,6 +37,7 @@ export class AppComponent {
 
     this.attachSessionEvents();
     this.manageSessionMenu();
+    firebase.firestore().enablePersistence();
     window['mainApp'] = this;
   }
 

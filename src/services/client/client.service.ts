@@ -2,7 +2,6 @@ import { Client } from './../../model/client.model';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
-import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -15,7 +14,6 @@ export class ClientService {
 
   constructor() {
     this.db = firebase.firestore();
-    this.db.enablePersistence();
   }
 
   public createClient( client: Client ): Promise<any> {
@@ -69,6 +67,10 @@ export class ClientService {
         resolve(clients);
       }).catch( reject );
     });
+  }
+
+  public getDocReference( id ): firebase.firestore.DocumentReference {
+    return this.db.doc((this.COLLECTION_NAME + '/' + id));
   }
 }
 

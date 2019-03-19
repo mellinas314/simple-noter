@@ -1,7 +1,7 @@
 {
     "client.alert.confirm_delete": "¿Seguro que deseas eliminar el cliente actual? Sus trabajos asignados se mantendrán, pero quedarán sin cliente asociado",
     "client.alert.error_creating": "Se ha producido un error al sincronizar la información. Inténtalo de nuevo más tarde",
-    "client.alert.error_fetching_info": "No se ha podido descargar la información del usuario. Ínténtalo de nuevo más tarde",
+    "client.alert.error_fetching_info": "No se ha podido descargar la información. Ínténtalo de nuevo más tarde",
     "client.list.call": "Llamar",
     "client.create": "Nuevo cliente",
     "client.edit": "Editar cliente",
@@ -28,7 +28,20 @@
     "menu.home": "Home",
     "menu.logout": "Cerrar sesión",
 
+    "shared.accept": "Aceptar",
     "shared.cancel": "Cancelar",
+    "shared.close": "Cerrar",
     "shared.confirm": "Confirmar",
-    "shared.close": "Cerrar"
+
+    "task.client": "Cliente",
+    "task.client_desc": "Descripción cliente",
+    "task.client_desc.validation": "Introduzca una descripción del cliente",
+    "task.create": "Crear tarea",
+    "task.description": "Descripción",
+    "task.description.validation": "Campo obligatorio",
+    "task.edit": "Editar tarea",
+    "task.title": "Título",
+    "task.title.validation": "Campo obligatorio",
+    "task.total": "Total factura (€)",
+    "task.total.validation": "Campo obligatorio"
 }
