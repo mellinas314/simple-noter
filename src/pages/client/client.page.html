@@ -5,7 +5,14 @@
       <ion-back-button defaultHref="clients"></ion-back-button>
     </ion-buttons>
 
-    <ion-title>{{ 'client.create' | translate }}</ion-title>
+    <ion-title *ngIf="!initializing && !id" >{{ 'client.create' | translate }}</ion-title>
+    <ion-title *ngIf="!initializing && id" >{{ 'client.edit' | translate }}</ion-title>
+
+    <ion-buttons slot="end" *ngIf="!initializing && id">
+      <ion-button icon-only (click)="deleteClient()" >
+        <ion-icon name="trash" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
 
   </ion-toolbar>
 </ion-header>

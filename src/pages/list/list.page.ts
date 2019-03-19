@@ -51,7 +51,7 @@ export class ListPage {
   }
 
   public editClient( cliente: Client ): void {
-    console.log("EDIT:", cliente);
+    this.router.navigate(['client/' + cliente.id]);
   }
 
   public sendMail( cliente: Client ): void {

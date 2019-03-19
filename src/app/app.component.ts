@@ -1,9 +1,7 @@
 import { FIREBASE_CONFIG } from './../../config';
 import { Component } from '@angular/core';
 
-import { Platform, Events, MenuController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Events, MenuController } from '@ionic/angular';
 import { UserService } from 'src/services/user/user.service';
 import { TranslateService } from '@ngx-translate/core';
 import * as firebase from 'firebase/app';
@@ -25,10 +23,7 @@ export class AppComponent {
   /** @hidden */
   constructor(
     private router: Router,
-    private platform: Platform,
     private menuCtrl: MenuController,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
     private userService: UserService,
     private events: Events,
     private translate: TranslateService
@@ -45,11 +40,6 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-
     this.initFirebase();
   }
 
