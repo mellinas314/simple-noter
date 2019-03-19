@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/guards/auth/auth.guard';
 import { NonAuthGuard } from 'src/guards/non-auth/non-auth.guard';
-import { Guard404Guard } from 'src/guards/404/guard404.guard';
 
 const routes: Routes = [
   {
@@ -24,6 +23,22 @@ const routes: Routes = [
     path: 'clients',
     loadChildren: '../pages/list/list.module#ListPageModule',
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'task',
+    loadChildren: '../pages/task/task.module#TaskPageModule'
+  },
+  {
+    path: 'task/:id',
+    loadChildren: '../pages/task/task.module#TaskPageModule'
+  },
+  {
+    path: 'client',
+    loadChildren: '../pages/client/client.module#ClientPageModule'
+  },
+  {
+    path: 'client/:id',
+    loadChildren: '../pages/client/client.module#ClientPageModule'
   },
   {
     path: '**',

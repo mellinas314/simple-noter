@@ -1,0 +1,31 @@
+.label-stacked {
+    font-size: 17px;
+
+    .required {
+        color: red;
+        font-size: 14px;
+        font-weight: bold;
+        margin-left: 3px;
+    }
+}
+
+.validation-error {
+    color: #f12727;
+    display: none;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 8px;
+    text-align: right;
+}
+
+.item {
+    &.ion-invalid {
+
+        &:not(.item-has-focus) {
+            + .validation-error {
+                display: block;
+            }
+        }
+    }
+}

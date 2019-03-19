@@ -1,4 +1,13 @@
 {
+    "client.create": "Nuevo cliente",
+    "client.email": "Correo electrónico",
+    "client.email.validation": "Correo electrónico no válido",
+    "client.name": "Nombre",
+    "client.name.validation": "Campo obligatorio",
+    "client.phone": "Teléfono",
+    "client.phone.validation": "Teléfono no válido",
+    "client.save": "Guardar",
+
     "login.dologin_button": "Iniciar",
     "login.error_fields": "Debe rellenar los campos usuario y contraseña",
     "login.error_login_in": "Se ha producido un error al iniciar sesión. Revisa tu usuario y contraseña.",

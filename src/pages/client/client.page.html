@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="clients"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{ 'client.create' | translate }}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="clientForm" (ngSubmit)="updateData()" >
+
+    <div class="validator-group" [class.invalid]="!clientForm.controls.name.valid && (!!clientForm.controls.name.dirty || submitAttempt)">
+      <ion-item>
+          <ion-label position="stacked">{{ 'client.name' | translate}}<span class="required">*</span></ion-label>
+          <ion-input formControlName="name" type="text"></ion-input>
+      </ion-item>
+      <div class="validation-error">{{ 'client.name.validation' | translate }}</div>
+    </div>
+
+    <div class="validator-group" [class.invalid]="!clientForm.controls.email.valid && (!!clientForm.controls.email.dirty || submitAttempt)">
+      <ion-item>
+          <ion-label position="stacked">{{ 'client.email' | translate}}</ion-label>
+          <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <div class="validation-error">{{ 'client.email.validation' | translate }}</div>
+    </div>
+
+    <div class="validator-group" [class.invalid]="!clientForm.controls.phone.valid && (!!clientForm.controls.phone.dirty || submitAttempt)">
+      <ion-item>
+          <ion-label position="stacked">{{ 'client.phone' | translate}}</ion-label>
+          <ion-input formControlName="phone" type="tel"></ion-input>
+      </ion-item>
+      <div class="validation-error">{{ 'client.phone.validation' | translate }}</div>
+    </div>
+
+    <ion-button margin-top expand="block" type="submit">{{ 'client.save' | translate }}</ion-button>
+
+  </form>
+</ion-content>

@@ -1,27 +1,25 @@
 <ion-header>
   <ion-toolbar>
+
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+
     <ion-title>
       {{ 'menu.clients' | translate }}
     </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button icon-only>
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+      <ion-button icon-only (click)="createClient()" >
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
 </ion-content>
