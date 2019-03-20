@@ -19,7 +19,7 @@ export class TaskPage {
 
   public clients: Client[];
   public id: string;
-  private initializing = true;
+  public initializing = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -55,12 +55,52 @@ export class TaskPage {
     window['taskFormPage'] = this;
   }
 
-  private syncTaskInfo() {
-
+  private async syncTaskInfo() {
+    const loader = await this.loadingCtrl.create();
+    loader.present();
+    this.taskS.getTask(this.id).then( task => {
+      this.taskForm.setValue( {
+        title: task.title,
+        description: task.description,
+        client: !task.client ||  typeof task.client === 'string' ? task.client : task.client.id,
+        clientDescriptionName: task.clientDescriptionName,
+        total: task.total,
+        date: task.date
+      });
+    }).catch( err => {
+      console.warn(err);
+      this.alertCtrl.create({
+        message: this.translateS.instant('client.alert.error_fetching_info'),
+        buttons: [this.translateS.instant('shared.close')]
+      });
+      window.history.back();
+    }).then( loader.dismiss );
   }
 
   public deleteTask() {
-
+    this.alertCtrl.create({
+      message: this.translateS.instant('task.alert.confirm_delete'),
+      buttons: [{
+        text: this.translateS.instant('shared.cancel')
+      }, {
+        role: 'cancel',
+        text: this.translateS.instant('shared.confirm'),
+        handler: async _ => {
+          const loader = await this.loadingCtrl.create();
+          loader.present();
+          this.taskS.deleteTask( this.id )
+                      .then( _ => this.updateSuccess() )
+                      .catch( _ => {
+                        this.alertCtrl.create({
+                          message: this.translateS.instant('task.alert.error_delete'),
+                          buttons: [this.translateS.instant('shared.close')]
+                        }).then( popup => popup.present() );
+                      }).then( loader.dismiss );
+        }
+      }]
+    }).then( alert => {
+      alert.present();
+    });
   }
 
   private updateSuccess() {

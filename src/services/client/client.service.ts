@@ -31,9 +31,13 @@ export class ClientService {
   public getClient( id: string ): Promise<Client> {
     return new Promise<Client>( (resolve, reject) => {
       this.db.collection(this.COLLECTION_NAME).doc(id).get().then( data => {
-        const tmpClient = <Client>data.data();
-        tmpClient.id = data.id;
-        resolve(tmpClient);
+        if (data && data.data()) {
+          const tmpClient = <Client>data.data();
+          tmpClient.id = data.id;
+          resolve(tmpClient);
+        } else {
+          reject();
+        }
       }, reject );
     });
   }

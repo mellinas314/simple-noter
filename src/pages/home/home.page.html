@@ -6,7 +6,7 @@
     </ion-buttons>
 
     <ion-title>
-      Home
+      {{ 'home.title' | translate }}
     </ion-title>
 
     <ion-buttons slot="end">
@@ -22,5 +22,35 @@
 </ion-header>
 
 <ion-content>
+
+  <ng-container *ngIf="!loading && (!tasks || !tasks.length);else taskTemplate">
+    <div class="empty-list">
+      <h1>{{ 'home.no_items' | translate }}</h1>
+    </div>
+  </ng-container>
+
+  <ng-template #taskTemplate>
+    <ion-grid class="tasks-container">
+      <ion-row>
+        <ion-col size="12" size-md="6" size-xl="4" *ngFor="let tarea of tasks">
+          <ion-card>
+            <ion-card-header>
+              <div class="price"><span class="value">{{ tarea.total }}€</span></div>
+              <time class="fecha">{{ tarea.date | date:'HH:mm dd/MM/yyyy' }}</time>
+            </ion-card-header>
+            <ion-card-content>
+              <h1>{{ tarea.title }}</h1>
+              <h2>{{ tarea.description }}</h2>
+              <div class="client"><b>{{ 'home.client' | translate }}:</b> {{ tarea.clientDescriptionName }}</div>
+            </ion-card-content>
+            <div class="buttons-footer">
+              <div class="client ion-activatable" *ngIf="tarea.client" (click)="openClient(tarea.client)" >{{ 'home.client' | translate }}<ion-ripple-effect></ion-ripple-effect></div>
+              <div class="edit ion-activatable" (click)="editTask(tarea)" >{{ 'client.list.edit' | translate}}<ion-ripple-effect></ion-ripple-effect></div>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-template>
 
 </ion-content>

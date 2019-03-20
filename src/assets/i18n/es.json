@@ -1,8 +1,11 @@
 {
     "client.alert.confirm_delete": "¿Seguro que deseas eliminar el cliente actual? Sus trabajos asignados se mantendrán, pero quedarán sin cliente asociado",
     "client.alert.error_creating": "Se ha producido un error al sincronizar la información. Inténtalo de nuevo más tarde",
+    "client.alert.error_delete": "Se ha producido un error al eliminar el cliente. Inténtalo de nuevo más tarde",
     "client.alert.error_fetching_info": "No se ha podido descargar la información. Ínténtalo de nuevo más tarde",
     "client.list.call": "Llamar",
+    "client.list.error_downloading": "No se ha podido descargar la información. Inténtalo de nuevo más tarde.",
+    "client.list.no_items": "Aún no ha añadido ningún cliente",
     "client.create": "Nuevo cliente",
     "client.edit": "Editar cliente",
     "client.list.edit": "Editar",
@@ -15,8 +18,10 @@
     "client.phone.validation": "Teléfono no válido",
     "client.save": "Guardar",
 
-    "client.list.error_downloading": "No se ha podido descargar la información. Inténtalo de nuevo más tarde.",
-    "client.list.no_items": "Aún no ha añadido ningún cliente",
+    "home.client": "Cliente",
+    "home.no_items": "No hay ningún trabajo en el periodo actual",
+    "home.title": "Trabajos",
+    "home.total": "Total",
 
     "login.dologin_button": "Iniciar",
     "login.error_fields": "Debe rellenar los campos usuario y contraseña",
@@ -25,7 +30,7 @@
     "login.pass_placeholder": "Contraseña",
 
     "menu.clients": "Clientes",
-    "menu.home": "Home",
+    "menu.home": "Trabajos",
     "menu.logout": "Cerrar sesión",
 
     "shared.accept": "Aceptar",
@@ -33,6 +38,8 @@
     "shared.close": "Cerrar",
     "shared.confirm": "Confirmar",
 
+    "task.alert.confirm_delete": "¿Seguro que deseas eliminar la tarea actual? Su información no se podrá recuperar",
+    "task.alert.error_delete": "Se ha producido un error al eliminar el trabajo. Inténtalo de nuevo más tarde",
     "task.client": "Cliente",
     "task.client_desc": "Descripción cliente",
     "task.client_desc.validation": "Introduzca una descripción del cliente",
