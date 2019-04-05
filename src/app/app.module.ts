@@ -1,3 +1,4 @@
+import { ClientCardComponent } from './../components/client-card/client-card.component';
 import { ComponentsModule } from './../components/components.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,7 +19,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [
+    ClientCardComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

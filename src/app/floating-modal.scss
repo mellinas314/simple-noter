@@ -1,0 +1,18 @@
+.floating-modal {
+    --height: auto;
+    --width: 90%;
+
+    .modal-wrapper {
+        border-radius: 5px;
+    }
+
+    .ion-page {
+        contain: layout style;
+        display: block;
+        position: initial;
+
+        ion-card {
+            margin: 0;
+        }
+    }
+}

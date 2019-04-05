@@ -1,4 +1,6 @@
-import { LoadingController, AlertController, Events } from '@ionic/angular';
+import { ClientCardComponent } from './../../components/client-card/client-card.component';
+import { Client } from './../../model/client.model';
+import { LoadingController, AlertController, Events, ModalController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { TaskService } from 'src/services/task/task.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -18,6 +20,7 @@ export class HomePage {
   private currentEnd;
 
   constructor(
+    private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
     private translateS: TranslateService,
     private alertCtrl: AlertController,
@@ -65,8 +68,34 @@ export class HomePage {
     if (client && typeof client === 'string') {
       this.router.navigate(['client/' + client]);
     } else {
-      this.router.navigate(['client/' + client.id]);
+      this.loadingCtrl.create({
+        message: 'Cargando...'
+      }).then( loader => {
+        loader.present();
+        client.get().then( (clientInfo: firebase.firestore.DocumentSnapshot) => {
+          this.showModalClient(<Client>clientInfo.data(), client.id);
+        }).catch( _ => {
+          this.router.navigate(['client/' + client.id]);
+        }).then( loader.dismiss );
+      });
     }
+  }
+
+  private showModalClient( clientInfo: Client, clientId: string ): void {
+    console.log("showModalClient", clientInfo);
+    clientInfo.id = clientId;
+    this.modalCtrl.create({
+      backdropDismiss: true,
+      component: ClientCardComponent,
+      animated: true,
+      componentProps: {
+        cliente: clientInfo
+      },
+      cssClass: 'floating-modal',
+      showBackdrop: true
+    }).then( modal => {
+      modal.present();
+    });
   }
 
   public editTask( task ) {
