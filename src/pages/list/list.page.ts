@@ -45,16 +45,4 @@ export class ListPage {
       });
     }).then( loader.dismiss );
   }
-
-  public doCall( cliente: Client ): void {
-    window.open('tel:' + cliente.phone, '_blank');
-  }
-
-  public editClient( cliente: Client ): void {
-    this.router.navigate(['client/' + cliente.id]);
-  }
-
-  public sendMail( cliente: Client ): void {
-    window.open('mailto:' + cliente.email);
-  }
 }

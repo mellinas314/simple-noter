@@ -1,0 +1,19 @@
+<ion-card>
+  <ion-card-header class="client-card-header">
+    <app-rounded-letter [letter]="cliente.name[0]" borderColor="#444" fontSize="20px"></app-rounded-letter>
+    <div class="client-info">
+      <h1>{{ cliente.name }}</h1>
+      <div class="client-additional-info" *ngIf="cliente.phone || cliente.email" >
+        <h2 *ngIf="cliente.phone" >{{ cliente.phone }}</h2>
+        <h3 *ngIf="cliente.email" >{{ cliente.email}}</h3>
+      </div>
+    </div>
+  </ion-card-header>
+  <ion-card-content>
+    <div class="buttons-footer">
+      <div class="phone ion-activatable" *ngIf="cliente.phone" (click)="doCall(cliente)" >{{ 'client.list.call' | translate }}<ion-ripple-effect></ion-ripple-effect></div>
+      <div class="mail ion-activatable" *ngIf="cliente.email" (click)="sendMail(cliente)">{{ 'client.list.mail' | translate}}<ion-ripple-effect></ion-ripple-effect></div>
+      <div class="edit ion-activatable" (click)="editClient(cliente)" >{{ 'client.list.edit' | translate}}<ion-ripple-effect></ion-ripple-effect></div>
+    </div>
+  </ion-card-content>
+</ion-card>
