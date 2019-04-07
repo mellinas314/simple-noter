@@ -16,3 +16,14 @@
         }
     }
 }
+
+.bottom-modal {
+    --height: auto;
+    --width: 100%;
+
+    .modal-wrapper {
+        border-radius: 0;
+        bottom: 0;
+        position: absolute;
+    }
+}

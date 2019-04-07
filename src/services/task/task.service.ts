@@ -98,4 +98,25 @@ export class TaskService {
       }).catch( reject );
     });
   }
+
+  public getTasksFiltered(start: number = 0, end: number = Date.now(), client: string = null ): Promise<Task[]> {
+    return new Promise( (resolve, reject) => {
+      const collection = this.db.collection(this.COLLECTION_NAME);
+      let query: firebase.firestore.Query = collection.orderBy('date', 'desc');
+      if (client) {
+        const clientRef = this.clientS.getDocReference(client);
+        query = collection.where('client', '==', clientRef);
+      }
+      query = query.where('date', '>=', start).where('date', '<=', end);
+      query.get().then( entries => {
+        const tasks:Task[] = [];
+        entries.docs.forEach( client => {
+          const tmpTask = <Task>client.data();
+          tmpTask.id = client.id;
+          tasks.push(tmpTask);
+        });
+        resolve(tasks);
+      }).catch( console.warn );
+    });
+  }
 }

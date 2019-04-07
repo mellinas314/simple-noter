@@ -18,6 +18,11 @@
     "client.phone.validation": "Teléfono no válido",
     "client.save": "Guardar",
 
+    "filter.all_clients": "Todos",
+    "filter.client": "Cliente",
+    "filter.date_from": "Desde",
+    "filter.date_to": "Hasta",
+
     "home.client": "Cliente",
     "home.no_items": "No hay ningún trabajo en el periodo actual",
     "home.title": "Trabajos",
@@ -34,9 +39,11 @@
     "menu.logout": "Cerrar sesión",
 
     "shared.accept": "Aceptar",
+    "shared.error": "Se ha producido un error inesperado. Inténtalo de nuevo más tarde",
     "shared.cancel": "Cancelar",
     "shared.close": "Cerrar",
     "shared.confirm": "Confirmar",
+    "shared.save": "Guardar",
 
     "task.alert.confirm_delete": "¿Seguro que deseas eliminar la tarea actual? Su información no se podrá recuperar",
     "task.alert.error_delete": "Se ha producido un error al eliminar el trabajo. Inténtalo de nuevo más tarde",

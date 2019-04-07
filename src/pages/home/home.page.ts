@@ -1,3 +1,4 @@
+import { FilterComponent } from './../../components/filter/filter.component';
 import { ClientCardComponent } from './../../components/client-card/client-card.component';
 import { Client } from './../../model/client.model';
 import { LoadingController, AlertController, Events, ModalController } from '@ionic/angular';
@@ -6,6 +7,7 @@ import { TaskService } from 'src/services/task/task.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Task } from 'src/model/task.model';
 import { Router } from '@angular/router';
+import { OverlayEventDetail } from '@ionic/core';
 
 @Component({
   selector: 'app-home',
@@ -53,7 +55,7 @@ export class HomePage {
   }
 
   private getStartDate():number {
-    //Por defecto, miramos los últimos 31 días
+    // Por defecto, miramos los últimos 31 días
     const today = new Date();
     today.setHours(0);
     today.setMinutes(0);
@@ -82,7 +84,6 @@ export class HomePage {
   }
 
   private showModalClient( clientInfo: Client, clientId: string ): void {
-    console.log("showModalClient", clientInfo);
     clientInfo.id = clientId;
     this.modalCtrl.create({
       backdropDismiss: true,
@@ -100,6 +101,39 @@ export class HomePage {
 
   public editTask( task ) {
     this.router.navigate(['task/' + task.id]);
+  }
+
+  public async filter() {
+    const modal = await this.modalCtrl.create({
+      backdropDismiss: true,
+      component: FilterComponent,
+      animated: true,
+      componentProps: {
+        date: true,
+        client: true
+      },
+      cssClass: ['floating-modal', 'bottom-modal']
+    });
+    modal.present();
+    modal.onDidDismiss().then( (event: OverlayEventDetail) => {
+      if (event.data) {
+        this.doFilter(event.data);
+      }
+    });
+  }
+
+  private async doFilter( data: {client ?: string, end ?: string, start ?: string} ) {
+    console.log('Filter', data);
+    const loader = await this.loadingCtrl.create();
+    loader.present();
+    this.taskS.getTasksFiltered(new Date(data.start).getTime(), new Date(data.end).getTime(), data.client).then( tareas => {
+      this.tasks = tareas;
+    }).catch( e => {
+      this.alertCtrl.create({
+        buttons: [this.translateS.instant('shared.close')],
+        message: this.translateS.instant('shared.error')
+      }).then( alert => alert.present() );
+    }).then( loader.dismiss );
   }
 
 }

@@ -1,0 +1,28 @@
+<header>
+  <ion-item no-padding class="ion-float-right">
+    <ion-button fill="clear" (click)="cancel()">{{ 'shared.cancel' | translate }}</ion-button>
+    <ion-button fill="clear" (click)="save()" >{{ 'shared.save' | translate }}</ion-button>
+  </ion-item>
+</header>
+<div class="date-filter" *ngIf="date" >
+  <ion-item>
+    <ion-label>{{ 'filter.date_from' | translate }}</ion-label>
+    <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="dateStart" [cancelText]="'shared.cancel' | translate" [doneText]="'shared.save' | translate"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{ 'filter.date_to' | translate }}</ion-label>
+    <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="dateEnd" [cancelText]="'shared.cancel' | translate" [doneText]="'shared.save' | translate"></ion-datetime>
+  </ion-item>
+</div>
+<div class="user-filter" *ngIf="client">
+  <ion-item>
+    <ion-label>{{ 'filter.client' | translate }}</ion-label>
+    <ion-select [attr.placeholder]="'filter.all_clients' | translate" [(ngModel)]="selectedClient"
+                [cancelText]="'shared.cancel' | translate"
+                [okText]="'shared.save' | translate">
+      <ng-container *ngIf="clients && clients.length">
+        <ion-select-option  *ngFor="let client of clients" [value]="client.id">{{ client.name }}</ion-select-option>
+      </ng-container>
+    </ion-select>
+  </ion-item>
+</div>

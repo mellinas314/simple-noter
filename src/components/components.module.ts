@@ -4,20 +4,25 @@ import { CommonModule } from '@angular/common';
 import { RoundedLetterComponent } from './rounded-letter/rounded-letter.component';
 import { ClientCardComponent } from './client-card/client-card.component';
 import { IonicModule } from '@ionic/angular';
+import { FilterComponent } from './filter/filter.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     RoundedLetterComponent,
-    ClientCardComponent
+    ClientCardComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule
   ],
   exports: [
     RoundedLetterComponent,
-    ClientCardComponent
+    ClientCardComponent,
+    FilterComponent
   ]
 })
 export class ComponentsModule { }
