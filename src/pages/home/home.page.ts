@@ -5,7 +5,7 @@ import { LoadingController, AlertController, Events, ModalController } from '@io
 import { Component } from '@angular/core';
 import { TaskService } from 'src/services/task/task.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Task } from 'src/model/task.model';
+import { Task, TaskType } from 'src/model/task.model';
 import { Router } from '@angular/router';
 import { OverlayEventDetail } from '@ionic/core';
 
@@ -18,6 +18,7 @@ export class HomePage {
 
   public tasks: Task[] = [];
   public loading: boolean;
+  public TASK_TYPES_ENUM = TaskType;
   private currentStart;
   private currentEnd;
 
@@ -110,7 +111,8 @@ export class HomePage {
       animated: true,
       componentProps: {
         date: true,
-        client: true
+        client: true,
+        type: true
       },
       cssClass: ['floating-modal', 'bottom-modal']
     });
@@ -122,11 +124,11 @@ export class HomePage {
     });
   }
 
-  private async doFilter( data: {client ?: string, end ?: string, start ?: string} ) {
-    console.log('Filter', data);
+  private async doFilter( data: {client ?: string, end ?: string, start ?: string, type ?: string} ) {
+    //console.log('Filter', data);
     const loader = await this.loadingCtrl.create();
     loader.present();
-    this.taskS.getTasksFiltered(new Date(data.start).getTime(), new Date(data.end).getTime(), data.client).then( tareas => {
+    this.taskS.getTasksFiltered(new Date(data.start).getTime(), new Date(data.end).getTime(), data.client, data.type).then( tareas => {
       this.tasks = tareas;
     }).catch( e => {
       this.alertCtrl.create({

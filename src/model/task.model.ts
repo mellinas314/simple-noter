@@ -6,4 +6,11 @@ export interface Task {
     clientDescriptionName: string;
     total: number;
     date: number;
+    type: TaskType;
+}
+
+export enum TaskType {
+    VENTA,
+    REPARACION,
+    OTROS
 }

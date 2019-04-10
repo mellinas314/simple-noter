@@ -42,6 +42,7 @@
               <h1>{{ tarea.title }}</h1>
               <h2>{{ tarea.description }}</h2>
               <div class="client"><b>{{ 'home.client' | translate }}:</b> {{ tarea.clientDescriptionName }}</div>
+              <div class="client"><b>{{ 'home.tipo' | translate }}:</b> {{ ('task.type.' + (tarea.type || 'REPARACION')) | translate }}</div>
             </ion-card-content>
             <div class="buttons-footer">
               <div class="client ion-activatable" *ngIf="tarea.client" (click)="openClient(tarea.client)" >{{ 'home.client' | translate }}<ion-ripple-effect></ion-ripple-effect></div>

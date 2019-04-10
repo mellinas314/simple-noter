@@ -31,7 +31,8 @@ export class TaskService {
         date: task.date,
         description: task.description,
         title: task.title,
-        total: task.total
+        total: task.total,
+        type: task.type
       };
       this.db.collection(this.COLLECTION_NAME).doc(id).set(syncTask).then( res => {
         resolve(res);
@@ -62,7 +63,8 @@ export class TaskService {
         date: task.date,
         description: task.description,
         title: task.title,
-        total: task.total
+        total: task.total,
+        type: task.type
       };
 
       this.db.collection(this.COLLECTION_NAME).add(syncTask).then( res => {
@@ -99,13 +101,18 @@ export class TaskService {
     });
   }
 
-  public getTasksFiltered(start: number = 0, end: number = Date.now(), client: string = null ): Promise<Task[]> {
+  public getTasksFiltered(start: number = 0, end: number = Date.now(), client: string = null, type: string = null ): Promise<Task[]> {
     return new Promise( (resolve, reject) => {
       const collection = this.db.collection(this.COLLECTION_NAME);
       let query: firebase.firestore.Query = collection.orderBy('date', 'desc');
-      if (client) {
+      if (client && type) {
+        const clientRef = this.clientS.getDocReference(client);
+        query = collection.where('client', '==', clientRef).where('type', '==', type);
+      } else if (client) {
         const clientRef = this.clientS.getDocReference(client);
         query = collection.where('client', '==', clientRef);
+      } else if (type) {
+        query = collection.where('type', '==', type);
       }
       query = query.where('date', '>=', start).where('date', '<=', end);
       query.get().then( entries => {

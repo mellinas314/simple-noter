@@ -22,9 +22,12 @@
     "filter.client": "Cliente",
     "filter.date_from": "Desde",
     "filter.date_to": "Hasta",
+    "filter.type": "Tipo tarea",
+    "filter.type.placeholder": "Todos",
 
     "home.client": "Cliente",
     "home.no_items": "No hay ningún trabajo en el periodo actual",
+    "home.tipo": "Tipo",
     "home.title": "Trabajos",
     "home.total": "Total",
 
@@ -54,8 +57,13 @@
     "task.description": "Descripción",
     "task.description.validation": "Campo obligatorio",
     "task.edit": "Editar tarea",
+    "task.incidence_type": "Tipo de trabajo",
+    "task.incidence_type.placeholder": "Tipo",
     "task.title": "Título",
     "task.title.validation": "Campo obligatorio",
     "task.total": "Total factura (€)",
-    "task.total.validation": "Campo obligatorio"
+    "task.total.validation": "Campo obligatorio",
+    "task.type.OTROS": "Otros",
+    "task.type.REPARACION": "Reparación",
+    "task.type.VENTA": "Venta"
 }

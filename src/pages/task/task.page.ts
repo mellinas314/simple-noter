@@ -6,6 +6,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { ClientService } from 'src/services/client/client.service';
 import { Client } from 'src/model/client.model';
 import { TaskService } from 'src/services/task/task.service';
+import { TaskType } from 'src/model/task.model';
 
 @Component({
   selector: 'app-task',
@@ -21,6 +22,14 @@ export class TaskPage {
   public id: string;
   public initializing = true;
 
+  public TASK_TYPES: string[] = ( types => {
+    const result = [];
+    for (let i = 0; types[i]; i++) {
+      result.push(types[i]);
+    }
+    return result;
+  })(TaskType);
+
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -33,6 +42,7 @@ export class TaskPage {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
+      type: ['REPARACION', Validators.required],
       client: [''],
       clientDescriptionName: [''],
       total: ['', [Validators.required, Validators.min(0), Validators.max(5000)]],
@@ -65,7 +75,8 @@ export class TaskPage {
         client: !task.client ||  typeof task.client === 'string' ? task.client : task.client.id,
         clientDescriptionName: task.clientDescriptionName,
         total: task.total,
-        date: task.date
+        date: task.date,
+        type: task.type || 'REPARACION'
       });
     }).catch( err => {
       console.warn(err);

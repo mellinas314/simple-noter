@@ -38,6 +38,16 @@
         </div>
 
         <ion-item>
+          <ion-label position="stacked">{{ 'task.incidence_type' | translate }}</ion-label>
+          <ion-select placeholder="{{'task.incidence_type.placeholder' | translate}}"
+                      formControlName="type" okText="{{ 'shared.accept' | translate }}"
+                      cancelText="{{ 'shared.cancel' | translate}}"
+                      interface="action-sheet">
+            <ion-select-option *ngFor="let type of TASK_TYPES" [value]="type"> {{ ('task.type.'+type) | translate }} </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
           <ion-label position="stacked">{{ 'task.client' | translate }}</ion-label>
           <ion-select placeholder="{{'task.client' | translate}}"
                       formControlName="client" okText="{{ 'shared.accept' | translate }}"

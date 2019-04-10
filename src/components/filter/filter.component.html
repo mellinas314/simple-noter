@@ -25,4 +25,13 @@
       </ng-container>
     </ion-select>
   </ion-item>
+  <div class="user-filter" *ngIf="type">
+    <ion-item>
+      <ion-label>{{ 'filter.type' | translate }}</ion-label>
+      <ion-select [attr.placeholder]="'filter.type.placeholder' | translate" [(ngModel)]="selectedType"
+                  [cancelText]="'shared.cancel' | translate"
+                  [okText]="'shared.save' | translate">
+        <ion-select-option  *ngFor="let type of TASK_TYPES" [value]="type">{{ 'task.type.'+type | translate }}</ion-select-option>
+      </ion-select>
+    </ion-item>
 </div>
