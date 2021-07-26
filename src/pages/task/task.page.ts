@@ -7,6 +7,7 @@ import { ClientService } from 'src/services/client/client.service';
 import { Client } from 'src/model/client.model';
 import { TaskService } from 'src/services/task/task.service';
 import { TaskType } from 'src/model/task.model';
+import { PrintService } from 'src/services/print/print.service';
 
 @Component({
   selector: 'app-task',
@@ -37,7 +38,8 @@ export class TaskPage {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private clientS: ClientService,
-    private taskS: TaskService
+    private taskS: TaskService,
+    public printS: PrintService
   ) {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -112,6 +114,10 @@ export class TaskPage {
     }).then( alert => {
       alert.present();
     });
+  }
+
+  public printTask() {
+    this.printS.printTask(this.taskForm.value);
   }
 
   private updateSuccess() {

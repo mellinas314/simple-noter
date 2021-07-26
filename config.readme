@@ -8,3 +8,5 @@ export const FIREBASE_CONFIG = {
     storageBucket: FIREBASE_STR_BUCKET
     messagingSenderId: FIREBASE_SENDER_ID
 };
+
+export const IS_PRINT_DEBUG = false;

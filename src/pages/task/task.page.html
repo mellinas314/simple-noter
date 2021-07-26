@@ -12,6 +12,9 @@
         <ion-button icon-only (click)="deleteTask()" >
           <ion-icon name="trash" color="danger"></ion-icon>
         </ion-button>
+        <ion-button *ngIf="printS.showPrintIcon" icon-only (click)="printTask()" >
+          <ion-icon name="print" color="dark"></ion-icon>
+        </ion-button>
       </ion-buttons>
 
     </ion-toolbar>

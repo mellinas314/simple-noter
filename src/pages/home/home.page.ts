@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Task, TaskType } from 'src/model/task.model';
 import { Router } from '@angular/router';
 import { OverlayEventDetail } from '@ionic/core';
+import { PrintService } from 'src/services/print/print.service';
 
 @Component({
   selector: 'app-home',
@@ -29,8 +30,10 @@ export class HomePage {
     private alertCtrl: AlertController,
     private router: Router,
     private events: Events,
-    private taskS: TaskService
+    private taskS: TaskService,
+    public printS: PrintService
   ) {
+    this.printS.configure();
     this.events.subscribe( this.taskS.TASK_UPDATED_EVENT, _ => this.refreshTasks(this.currentStart, this.currentEnd));
     this.events.subscribe( this.taskS.TASK_NEW_EVENT, _ => this.refreshTasks());
     this.refreshTasks();
@@ -102,6 +105,10 @@ export class HomePage {
 
   public editTask( task ) {
     this.router.navigate(['task/' + task.id]);
+  }
+
+  public printTask( task ) {
+    this.printS.printTask(task);
   }
 
   public async filter() {

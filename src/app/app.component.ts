@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { Router } from '@angular/router';
+import { PrintService } from 'src/services/print/print.service';
 
 window['firebase'] = firebase;
 

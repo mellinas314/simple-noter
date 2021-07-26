@@ -47,6 +47,7 @@
             <div class="buttons-footer">
               <div class="client ion-activatable" *ngIf="tarea.client" (click)="openClient(tarea.client)" >{{ 'home.client' | translate }}<ion-ripple-effect></ion-ripple-effect></div>
               <div class="edit ion-activatable" (click)="editTask(tarea)" >{{ 'client.list.edit' | translate}}<ion-ripple-effect></ion-ripple-effect></div>
+              <div class="print ion-activatable" *ngIf="printS.showPrintIcon" (click)="printTask(tarea)">{{ 'client.list.print' | translate}}<ion-ripple-effect></ion-ripple-effect></div>
             </div>
           </ion-card>
         </ion-col>

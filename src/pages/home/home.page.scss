@@ -89,6 +89,11 @@ ion-card {
         &.client::before {
           background-image: url('../../assets/icon/user_avatar.png');
         }
+
+        &.print::before {
+          background-image: url('../../assets/icon/print.svg');
+          background-size: 20px;
+        }
     }
   }
 }

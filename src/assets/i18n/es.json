@@ -9,6 +9,7 @@
     "client.create": "Nuevo cliente",
     "client.edit": "Editar cliente",
     "client.list.edit": "Editar",
+    "client.list.print": "Imprimir",
     "client.email": "Correo electrónico",
     "client.email.validation": "Correo electrónico no válido",
     "client.list.mail": "Enviar mail",
