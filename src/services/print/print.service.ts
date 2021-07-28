@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IS_PRINT_DEBUG } from 'config';
+import { Task } from 'src/model/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,17 @@ export class PrintService {
     window['printService'] = this;
   }
 
-  public printTask(task: any) {
-    console.log("Print task: ", task);
+  public printTask(task: Task) {
+    if(window["NativePrint"]) {
+      (window as any).NativePrint.printTask(JSON.stringify({
+        title: task.title,
+        description: task.description,
+        id: task.id,
+        clientName: task.clientDescriptionName,
+        total: task.total,
+        date: task.date,
+        type: task.type
+      }));
+    }
   }
 }
