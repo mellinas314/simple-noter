@@ -105,7 +105,7 @@ export class TaskService {
     });
   }
 
-  public getTasksFiltered(start: number = 0, end: number = Date.now(), client: string = null, type: string = null ): Promise<Task[]> {
+  public getTasksFiltered(start: number = 0, end: number = Date.now(), client: string = null, type: string = null, pendingPaid: string = null ): Promise<Task[]> {
     return new Promise( (resolve, reject) => {
       const collection = this.db.collection(this.COLLECTION_NAME);
       let query: firebase.firestore.Query = collection.orderBy('date', 'desc');
@@ -117,6 +117,13 @@ export class TaskService {
         query = collection.where('client', '==', clientRef);
       } else if (type) {
         query = collection.where('type', '==', type);
+      }
+      if(pendingPaid != null) {
+        if(pendingPaid == "yes") {
+          query = query.where('pendingPaid', "==", true);
+        }else {
+          query = query.where('pendingPaid', "==", false);
+        }
       }
       query = query.where('date', '>=', start).where('date', '<=', end);
       query.get().then( entries => {

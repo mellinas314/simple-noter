@@ -23,6 +23,7 @@
     "filter.client": "Cliente",
     "filter.date_from": "Desde",
     "filter.date_to": "Hasta",
+    "filter.paid_pending": "Cobro pendiente",
     "filter.type": "Tipo tarea",
     "filter.type.placeholder": "Todos",
 

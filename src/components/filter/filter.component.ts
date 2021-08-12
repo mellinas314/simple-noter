@@ -17,6 +17,7 @@ export class FilterComponent implements OnInit {
   @Input() public date: boolean;
   @Input() public name: boolean;
   @Input() public type: boolean;
+  @Input() public paid_pending: boolean;
   public TASK_TYPES: string[] = ( types => {
     const result = [];
     for (let i = 0; types[i]; i++) {
@@ -27,6 +28,7 @@ export class FilterComponent implements OnInit {
   public clients: Client[];
   public selectedClient: Client;
   public selectedType: TaskType;
+  public selectedPaid: string;
 
   public dateEnd = new Date().toISOString();
   public dateStart = new Date(Date.now() - MONTH_MILLISECONDS).toISOString();
@@ -53,7 +55,8 @@ export class FilterComponent implements OnInit {
       client: this.selectedClient,
       start: this.dateStart,
       end: this.dateEnd,
-      type: this.selectedType
+      type: this.selectedType,
+      pending_paid: this.selectedPaid
     });
   }
 }

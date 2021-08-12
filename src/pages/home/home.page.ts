@@ -119,7 +119,8 @@ export class HomePage {
       componentProps: {
         date: true,
         client: true,
-        type: true
+        type: true,
+        paid_pending: true
       },
       cssClass: ['floating-modal', 'bottom-modal']
     });
@@ -131,11 +132,11 @@ export class HomePage {
     });
   }
 
-  private async doFilter( data: {client ?: string, end ?: string, start ?: string, type ?: string} ) {
+  private async doFilter( data: {client ?: string, end ?: string, start ?: string, type ?: string, pending_paid ?: string} ) {
     //console.log('Filter', data);
     const loader = await this.loadingCtrl.create();
     loader.present();
-    this.taskS.getTasksFiltered(new Date(data.start).getTime(), new Date(data.end).getTime(), data.client, data.type).then( tareas => {
+    this.taskS.getTasksFiltered(new Date(data.start).getTime(), new Date(data.end).getTime(), data.client, data.type, data.pending_paid).then( tareas => {
       this.tasks = tareas;
     }).catch( e => {
       this.alertCtrl.create({

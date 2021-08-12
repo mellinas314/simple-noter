@@ -35,3 +35,14 @@
       </ion-select>
     </ion-item>
 </div>
+<div class="paid-pending" *ngIf="paid_pending">
+  <ion-item>
+    <ion-label>{{ 'filter.paid_pending' | translate }}</ion-label>
+    <ion-select [attr.placeholder]="'filter.type.placeholder' | translate" [(ngModel)]="selectedPaid"
+                [cancelText]="'shared.cancel' | translate"
+                [okText]="'shared.save' | translate">
+                <ion-select-option [value]="'yes'">{{ 'shared.yes' | translate }}</ion-select-option>
+                <ion-select-option [value]="'no'">{{ 'shared.no' | translate }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</div>
