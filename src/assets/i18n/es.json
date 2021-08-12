@@ -57,6 +57,7 @@
     "task.create": "Crear tarea",
     "task.description": "Descripción",
     "task.description.validation": "Campo obligatorio",
+    "task.operation": "Trabajo realizado",
     "task.edit": "Editar tarea",
     "task.incidence_type": "Tipo de trabajo",
     "task.incidence_type.placeholder": "Tipo",

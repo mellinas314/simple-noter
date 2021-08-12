@@ -145,4 +145,12 @@ export class HomePage {
     }).then( loader.dismiss );
   }
 
+  ionViewWillEnter() {
+    window['isHome'] = true;
+  }
+
+  ionViewWillLeave() {
+    window['isHome'] = false;
+  }
+
 }

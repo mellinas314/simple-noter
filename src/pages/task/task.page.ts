@@ -17,6 +17,7 @@ import { PrintService } from 'src/services/print/print.service';
 export class TaskPage {
 
   public taskForm: FormGroup;
+  public TaskType = TaskType;
   public submitAttempt = false;
 
   public clients: Client[];
@@ -45,6 +46,7 @@ export class TaskPage {
       title: ['', Validators.required],
       description: ['', Validators.required],
       type: ['REPARACION', Validators.required],
+      operation: [''],
       client: [''],
       clientDescriptionName: [''],
       total: ['', [Validators.required, Validators.min(0), Validators.max(5000)]],
@@ -74,6 +76,7 @@ export class TaskPage {
       this.taskForm.setValue( {
         title: task.title,
         description: task.description,
+        operation: task.operation || '',
         client: !task.client ||  typeof task.client === 'string' ? task.client : task.client.id,
         clientDescriptionName: task.clientDescriptionName,
         total: task.total,
@@ -117,7 +120,7 @@ export class TaskPage {
   }
 
   public printTask() {
-    this.printS.printTask(this.taskForm.value);
+    this.printS.printTask(this.taskForm.value, this.id);
   }
 
   private updateSuccess() {

@@ -30,6 +30,7 @@ export class TaskService {
         clientDescriptionName: task.clientDescriptionName,
         date: task.date,
         description: task.description,
+        operation: task.operation || '',
         title: task.title,
         total: task.total,
         type: task.type
@@ -62,6 +63,7 @@ export class TaskService {
         clientDescriptionName: task.clientDescriptionName,
         date: task.date,
         description: task.description,
+        operation: task.operation,
         title: task.title,
         total: task.total,
         type: task.type

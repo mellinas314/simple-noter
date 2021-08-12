@@ -40,6 +40,13 @@
           <div class="validation-error">{{ 'task.description.validation' | translate }}</div>
         </div>
 
+        <div class="validator-group" *ngIf="taskForm.value.type == 'REPARACION'">
+          <ion-item>
+              <ion-label position="stacked">{{ 'task.operation' | translate}}</ion-label>
+              <ion-textarea formControlName="operation" rows=6></ion-textarea>
+          </ion-item>
+        </div>
+
         <ion-item>
           <ion-label position="stacked">{{ 'task.incidence_type' | translate }}</ion-label>
           <ion-select placeholder="{{'task.incidence_type.placeholder' | translate}}"

@@ -14,12 +14,12 @@ export class PrintService {
     window['printService'] = this;
   }
 
-  public printTask(task: Task) {
+  public printTask(task: Task, id: string = "") {
     if(window["NativePrint"]) {
       (window as any).NativePrint.printTask(JSON.stringify({
         title: task.title,
         description: task.description,
-        id: task.id,
+        id: task.id || id,
         clientName: task.clientDescriptionName,
         total: task.total,
         date: task.date,
