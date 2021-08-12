@@ -4,6 +4,11 @@
   }
 }
 
+.ticket-number {
+  margin: 8px -8px -8px 0;
+  text-align: right;
+}
+
 .empty-list {
   &::before {
       background: url('../../assets/icon/work_empty.png') no-repeat;

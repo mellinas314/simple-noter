@@ -23,6 +23,11 @@ export class TaskService {
     this.db = firebase.firestore();
   }
 
+  public getTaskNumber(task: Task) : string {
+    const date = new Date(task.date);
+    return `${date.getFullYear()}${date.getMonth().toString().padStart(2, "0")}${date.getDate().toString().padStart(2, "0")}_${date.getHours().toString().padStart(2, "0")}${date.getMinutes().toString().padStart(2, "0")}${date.getSeconds().toString().padStart(2, "0")}`;
+  }
+
   public updateTask( task: Task, id: string): Promise<any> {
     return new Promise( (resolve, reject) => {
       const syncTask: Task = {

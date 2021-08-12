@@ -30,7 +30,7 @@ export class HomePage {
     private alertCtrl: AlertController,
     private router: Router,
     private events: Events,
-    private taskS: TaskService,
+    public taskS: TaskService,
     public printS: PrintService
   ) {
     this.printS.configure();

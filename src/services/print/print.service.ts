@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { IS_PRINT_DEBUG } from 'config';
 import { Task } from 'src/model/task.model';
+import { TaskService } from '../task/task.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrintService {
   public showPrintIcon : boolean = false;
+
+  constructor(
+    private taskS: TaskService
+  ){}
 
   public configure() {
     console.log("Configure!!!", document.body.hasAttribute('data-is-ticketer-app'));
@@ -20,7 +25,7 @@ export class PrintService {
         title: task.title,
         description: task.description,
         operation: task.operation || "",
-        id: task.id || id,
+        id: this.taskS.getTaskNumber(task) || task.id || id,
         clientName: task.clientDescriptionName,
         total: task.total,
         date: task.date,
