@@ -19,6 +19,7 @@ export class PrintService {
       (window as any).NativePrint.printTask(JSON.stringify({
         title: task.title,
         description: task.description,
+        operation: task.operation || "",
         id: task.id || id,
         clientName: task.clientDescriptionName,
         total: task.total,
