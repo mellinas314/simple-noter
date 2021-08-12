@@ -33,6 +33,7 @@ export class TaskService {
         operation: task.operation || '',
         title: task.title,
         total: task.total,
+        pendingPaid: task.pendingPaid || false,
         type: task.type
       };
       this.db.collection(this.COLLECTION_NAME).doc(id).set(syncTask).then( res => {
@@ -64,6 +65,7 @@ export class TaskService {
         date: task.date,
         description: task.description,
         operation: task.operation,
+        pendingPaid: task.pendingPaid || false,
         title: task.title,
         total: task.total,
         type: task.type

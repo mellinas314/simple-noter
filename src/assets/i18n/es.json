@@ -28,6 +28,7 @@
 
     "home.client": "Cliente",
     "home.no_items": "No hay ningún trabajo en el periodo actual",
+    "home.pending_paid": "Cobro pendiente",
     "home.tipo": "Tipo",
     "home.title": "Trabajos",
     "home.total": "Total",
@@ -48,6 +49,8 @@
     "shared.close": "Cerrar",
     "shared.confirm": "Confirmar",
     "shared.save": "Guardar",
+    "shared.yes": "Si",
+    "shared.no": "No",
 
     "task.alert.confirm_delete": "¿Seguro que deseas eliminar la tarea actual? Su información no se podrá recuperar",
     "task.alert.error_delete": "Se ha producido un error al eliminar el trabajo. Inténtalo de nuevo más tarde",
@@ -61,6 +64,7 @@
     "task.edit": "Editar tarea",
     "task.incidence_type": "Tipo de trabajo",
     "task.incidence_type.placeholder": "Tipo",
+    "task.pending_paid": "Cobro pendiente",
     "task.title": "Título",
     "task.title.validation": "Campo obligatorio",
     "task.total": "Total factura (€)",

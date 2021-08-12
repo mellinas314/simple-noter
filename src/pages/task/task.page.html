@@ -83,6 +83,13 @@
           <div class="validation-error">{{ 'task.total.validation' | translate }}</div>
         </div>
 
+        <div class="validator-group">
+          <ion-item>
+              <ion-label>{{ 'task.pending_paid' | translate}}</ion-label>
+              <ion-checkbox formControlName="pendingPaid"></ion-checkbox>
+          </ion-item>
+        </div>
+
         <ion-button margin-top expand="block" type="submit">{{ 'client.save' | translate }}</ion-button>
 
       </form>

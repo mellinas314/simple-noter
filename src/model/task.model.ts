@@ -6,6 +6,7 @@ export interface Task {
     client: firebase.firestore.DocumentReference;
     clientDescriptionName: string;
     total: number;
+    pendingPaid: boolean;
     date: number;
     type: TaskType;
 }
