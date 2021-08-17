@@ -48,7 +48,7 @@ export class TaskPage {
       type: ['REPARACION', Validators.required],
       operation: [''],
       client: [''],
-      pendingPaid: [null, Validators.required],
+      pendingPaid: [false],
       clientDescriptionName: [''],
       total: ['', [Validators.required, Validators.min(0), Validators.max(5000)]],
       date: ['']
