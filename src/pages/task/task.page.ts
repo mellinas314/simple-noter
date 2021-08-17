@@ -50,7 +50,7 @@ export class TaskPage {
       client: [''],
       pendingPaid: [false],
       clientDescriptionName: [''],
-      total: ['', [Validators.required, Validators.min(0), Validators.max(5000)]],
+      total: ['', [Validators.min(0), Validators.max(5000)]],
       date: ['']
     });
 
